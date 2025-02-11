@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/flex.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/normalize.css">
     
 </head>
 <body>

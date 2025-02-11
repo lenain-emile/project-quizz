@@ -52,8 +52,8 @@ main
     text-align: center;
 }
 .navbar-menu a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #d352a4;
+    
 }
 .navbar-icon {
     font-size: 30px;
@@ -66,6 +66,41 @@ main
 #navbar-toggle:checked + .navbar-icon + .navbar-menu {
     display: flex;
 }
+
+footer {
+
+    
+    margin-top: 10%;
+    width: 100%;
+}
+
+
+
+.neon-title {
+    font-family: 'Corinthia';
+    font-size: 72px;
+    color: #ffffff;
+    text-shadow:
+        0 0 6px rgba(241, 139, 245, 0.92),
+        0 0 30px rgba(241, 105, 196, 0.34),
+        0 0 12px rgba(245, 114, 212, 0.52),
+        0 0 21px rgba(238, 157, 227, 0.92),
+        0 0 34px rgba(212, 124, 179, 0.78),
+        0 0 54px rgba(221, 103, 201, 0.92);
+}
+
+.neon-title span {
+    text-shadow:
+        0 0 6px rgba(126, 194, 240, 0.92),
+        0 0 30px rgba(105, 221, 241, 0.34),
+        0 0 12px rgba(114, 214, 245, 0.52),
+        0 0 21px rgba(157, 233, 238, 0.92),
+        0 0 34px rgba(124, 206, 212, 0.78),
+        0 0 54px rgba(103, 213, 221, 0.92);
+    position: relative;
+    top: 35px;
+}
+
 
 @media (max-width: 600px) {
     .navbar-menu {
@@ -83,4 +118,18 @@ main
      h1 {
         font-size: 1.5em;
      }
+     footer {
+    display: none;
+    }
+}
+
+@media (min-width: 601px) {
+    .navbar-icon {
+        display: none;
+    }
+    .navbar-menu {
+        display: flex;
+        flex-direction: row;
+    }
+    
 }

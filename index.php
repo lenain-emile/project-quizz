@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Quizz</title>
+    <title>Project Quizz Night</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/flex.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
@@ -23,14 +23,15 @@
         <input type="checkbox" id="navbar-toggle">
         <label for="navbar-toggle" class="navbar-icon">&#9776;</label>
         <div class="navbar-menu">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="user.php">Profil</a>
+            <a href="#home">Accueil</a>
+            <a href="#about">A propos</a>
+            <a href="user.php">Contact</a>
         </div>
     </div>
+    <a href="profile.php"><img src="image/icon.png" alt="Profil" class="icon"></a>
 </nav>
 <main>
-<h1>Bienvenue sur Quizz !</h1>
+<h1 class="neon-title">Quiz <span>Night</span></h1>
 
 <p>Êtes-vous prêt à tester vos connaissances et à relever des défis passionnants ? 
 À vous de jouer !</p>
@@ -75,3 +76,7 @@
 
 </body>
 </html>
+<footer>
+        <p> 2025 Quiz Night. Tous droits réservés.</p>
+    
+</footer>

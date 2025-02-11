@@ -36,3 +36,24 @@
 
 
 }
+.icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@keyframes neonBorder {
+    0% {
+        box-shadow: 0 0 5px #d352a4, 0 0 10px #d352a4, 0 0 20px #d352a4, 0 0 40px #d352a4;
+    }
+    50% {
+        box-shadow: 0 0 10px #d352a4, 0 0 20px #d352a4, 0 0 40px #d352a4, 0 0 80px #d352a4;
+    }
+    100% {
+        box-shadow: 0 0 5px #d352a4, 0 0 10px #d352a4, 0 0 20px #d352a4, 0 0 40px #d352a4;
+    }
+}
+
+.item {
+    animation: neonBorder 1.5s infinite alternate;
+}

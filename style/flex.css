@@ -2,23 +2,25 @@
     display: flex;
     justify-content: space-around;
     margin-top: 10%;
-    margin-right: 10%;
+
     
   }
   
-  .item {
-      width: 100px;
-      height: 100px;
-      
-      
-  }
+
 
 .container {
     flex-wrap: wrap;
 }
-.item img {
-    border: 2px solid black;
-    border-radius: 5px;
+
+
+.item
+
+{
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.item h2 
+{
+    text-align: center;
 }
 
 .item:hover {
@@ -26,9 +28,11 @@
     transition: transform 0.3s ease;
 }
 
-h2 {
-    text-align: center;
-    color:#F18526;
-    font-size: 1.5em;
-    margin-top: 10px;
+@media (max-width: 576px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+
 }

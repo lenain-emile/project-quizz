@@ -1,8 +1,6 @@
 body {
-    background-color:  #1c1c1c;
+    background-color: #1c1c1c;
 }
-
-
 
 p {
     color: white;
@@ -12,62 +10,147 @@ p {
     line-height: 2.5;
 }
 
-h1, h2 {
-    color: #d352a4 ;
+h1 {
+
     text-align: center;
     margin-top: 5%;
-} 
+    margin-bottom: 5%;
+}
 
-h1, h2, p, a 
-{
+h1,
+h2,
+p,
+a {
     font-family: 'Outfit';
 }
 
-p
-main
-{
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+/* v HEADER v */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
-.navbar {
-    background-color: #333;
-    overflow: hidden;
-}
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 14px 20px;
 }
+
 .navbar-menu {
     display: none;
     flex-direction: column;
 }
+
 .navbar-menu a {
     color: white;
     padding: 14px 20px;
     text-decoration: none;
     text-align: center;
 }
+
 .navbar-menu a:hover {
     background-color: #ddd;
     color: black;
 }
+
 .navbar-icon {
     font-size: 30px;
     cursor: pointer;
     color: white;
 }
+
 #navbar-toggle {
     display: none;
 }
-#navbar-toggle:checked + .navbar-icon + .navbar-menu {
+
+#navbar-toggle:checked+.navbar-icon+.navbar-menu {
     display: flex;
 }
 
-@media (max-width: 600px) {
+.neon-title {
+    font-family: 'Corinthia';
+    font-size: 72px;
+    color: #ffffff;
+    text-shadow:
+        0 0 6px rgba(241, 139, 245, 0.92),
+        0 0 30px rgba(241, 105, 196, 0.34),
+        0 0 12px rgba(245, 114, 212, 0.52),
+        0 0 21px rgba(238, 157, 227, 0.92),
+        0 0 34px rgba(212, 124, 179, 0.78),
+        0 0 54px rgba(221, 103, 201, 0.92);
+}
+
+.neon-title span {
+    text-shadow:
+        0 0 6px rgba(126, 194, 240, 0.92),
+        0 0 30px rgba(105, 221, 241, 0.34),
+        0 0 12px rgba(114, 214, 245, 0.52),
+        0 0 21px rgba(157, 233, 238, 0.92),
+        0 0 34px rgba(124, 206, 212, 0.78),
+        0 0 54px rgba(103, 213, 221, 0.92);
+    position: relative;
+    top: 35px;
+}
+
+/* ^ HEADER ^  */
+
+/* v MAIN v */
+main {
+    width: 80%;
+    margin: auto;
+}
+
+.container {
+    display: flex;
+
+}
+
+
+.item:nth-child(odd) {
+    border: 1px solid white;
+    box-shadow:
+        0 0 2px #fff,
+        inset 0 0 2px #eee,
+        0 0 4px #5599C3,
+        inset 0 0 4px #5599C3,
+        0 0 8px #5599C3,
+        inset 0 0 8px #5599C3;
+    color: #B64E93;
+
+}
+
+.item:nth-child(even) {
+    border: 1px solid white;
+    box-shadow:
+        0 0 2px #fff,
+        inset 0 0 2px #eee,
+        0 0 4px #B64E93,
+        inset 0 0 4px #B64E93,
+        0 0 8px #B64E93,
+        inset 0 0 8px #B64E93;
+    color: #5599C3;
+
+}
+
+.item h2 {
+    text-align: center;
+}
+
+
+/* ^ MAIN ^ */
+
+/* v MEDIA QUERIES v */
+@media (max-width: 576px) {
+    .mobile {
+        display: block;
+    }
+
+    .desktop {
+        display: none;
+    }
+
     .navbar-menu {
         flex-direction: column;
         width: 100%;
@@ -76,11 +159,61 @@ main
         left: 0px;
         background-color: #333;
     }
+
     .navbar-menu a {
         text-align: left;
         padding: 10px 20px;
     }
-     h1 {
+
+    h1 {
         font-size: 1.5em;
-     }
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item
+    {
+        margin-top: 10%;
+    }
+
+
 }
+
+
+
+
+
+@media(min-width: 600px) {
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .item:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+    .container
+    {
+        justify-content: space-around;
+    }
+
+    .container:nth-child(odd)
+    {
+        margin-bottom: 10%;
+
+    }
+}
+
+

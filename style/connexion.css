@@ -1,0 +1,141 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #0a0a0a;
+            font-family: 'Outfit', sans-serif;
+            color: #fff;
+            background-image: linear-gradient(to bottom, #0a0a0a, #1a1a2e);
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(18, 18, 32, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.2),
+                        0 0 40px rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px #ff00ff,
+                         0 0 20px #ff00ff,
+                         0 0 30px #ff00ff;
+        }
+
+        .login-box {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .neon-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neon-button:hover {
+            background-color: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px #00ffff;
+        }
+
+        .form-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .neon-link {
+            color: #ff00ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+
+        .neon-link:hover {
+            color: #ff66ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+        }
+
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            background-color: rgba(220, 53, 69, 0.2);
+            border: 1px solid #dc3545;
+            color: #ff6b6b;
+        }
+
+        @keyframes neon-glow {
+            0% {
+                text-shadow: 0 0 10px #ff00ff,
+                             0 0 20px #ff00ff,
+                             0 0 30px #ff00ff;
+            }
+            50% {
+                text-shadow: 0 0 20px #ff00ff,
+                             0 0 30px #ff00ff,
+                             0 0 40px #ff00ff;
+            }
+            100% {
+                text-shadow: 0 0 10px #ff00ff,
+                             0 0 20px #ff00ff,
+                             0 0 30px #ff00ff;
+            }
+        }
+
+        h1 {
+            animation: neon-glow 2s infinite;
+        }
+  

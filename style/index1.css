@@ -1,0 +1,106 @@
+
+
+body {
+    background-color: #0d0d0d;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1, h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #00ffff;
+    color: #0d0d0d;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+}
+
+.btn-primary {
+    border-color: #ff00ff;
+    box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+}
+
+.btn-primary:hover {
+    background-color: #ff00ff;
+    color: #0d0d0d;
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+}
+
+.btn-secondary {
+    border-color: #ffcc00;
+    box-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00;
+}
+
+.btn-secondary:hover {
+    background-color: #ffcc00;
+    color: #0d0d0d;
+    box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffcc00;
+}
+
+.login-container, .user-greeting {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    background-color: #0d0d0d;
+    color: #fff;
+    box-shadow: 0 0 5px #00ffff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+.logo img {
+    filter: drop-shadow(0 0 10px #00ffff);
+    max-width: 100%;
+    height: auto;
+}

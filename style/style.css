@@ -94,6 +94,28 @@ ul {
     top: 35px;
 }
 
+@keyframes neonBorderPurple {
+    0% {
+        text-shadow:
+        0 0 6px rgba(241, 139, 245, 0.92);
+
+    }
+}
+
+@keyframes neonBorderBlue {
+    0% {
+        text-shadow:
+        0 0 6px rgba(139, 215, 245, 0.92);
+
+    }
+}
+h1 {
+    animation: neonBorderPurple 1.5s infinite alternate;
+}
+h1 span 
+{
+    animation: neonBorderBlue 1.5s infinite alternate;
+}
 /* ^ HEADER ^  */
 
 /* v MAIN v */
@@ -182,7 +204,10 @@ main {
 
 }
 
-
+.item img
+{
+    width: 100%;
+}
 
 
 

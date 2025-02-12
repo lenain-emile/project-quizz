@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Bienvenue sur Quizz Night</h1>
+            <h1>Inscription</h1>
         </header>
 
         <main>
@@ -25,11 +25,11 @@
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Connexion</title>
+                <title>Inscription</title>
             </head>
 
             <body>
-                <form action="class/User.php?login=true" method="POST">
+                <form action="class/User.php?register=true" method="POST">
                     <div>
                         <label for="username">Nom d'utilisateur:</label>
                         <input type="text" id="username" name="username" required>
@@ -39,7 +39,7 @@
                         <input type="password" id="password" name="password" required>
                     </div>
 
-                    <button type="submit">Login</button>
+                    <button type="submit">S'inscrire</button>
                 </form>
             </body>
 

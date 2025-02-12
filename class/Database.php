@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-class connexionDB {
+class Database {
     private $host    = 'localhost';  
-    private $name    = 'user_management';
+    private $name    = 'quiz-night';
     private $user    = 'root';        
     private $pass    = '';     
     private $connexion;
@@ -27,9 +27,20 @@ function __construct($host = null, $name = null, $user = null, $pass = null){
 
 }    
 
+public function query($sql, $data = array()){
+    $statement = $this->connexion->prepare($sql);
+    $statement->execute($data);
+    return $statement;
 
 }
-$DB = new connexionDB();
+public function insert($sql, $data = array()){
+
+    $statement = $this->connexion->prepare($sql);
+    $statement->execute($data);
+  
+  }
+}
+$DB = new Database();
 
 /*
     $pdo = new PDO('mysql:host=localhost;dbname=user_management', 'root', '',);

@@ -33,6 +33,7 @@ class User {
     
 }
 $user = new User($DB);
+/* We check if the submitted form is a Login or Register form, then call the corresponding method */
 
 if ($_POST && isset($_GET['login'])) {
     $username = $_POST['username'];

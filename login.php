@@ -9,14 +9,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Connexion à Quizz Night - Testez vos connaissances !">
     <title>Quizz Night - Connexion</title>
-    <link rel="stylesheet" href="./connexion.css">
+    <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=League+Script&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Bienvenue sur Quizz Night</h1>
-        </header>
+<header>
+    <nav class="navbar mobile">
+        <div class="navbar-container">
+            <input type="checkbox" id="navbar-toggle">
+            <label for="navbar-toggle" class="navbar-icon">&#9776;</label>
+            <div class="navbar-menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="user.php">Profil</a>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar desktop">
+        <div class="navbar-container">
+            <input type="checkbox" id="navbar-toggle">
+            <ul class="navbar-menu">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="user.php">Profil</a></li>
+            </ul>
+
+    </nav>
+    </header>
+
 
         <main>
             <!DOCTYPE html>

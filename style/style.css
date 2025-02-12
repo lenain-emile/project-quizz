@@ -15,6 +15,7 @@ h1 {
     text-align: center;
     margin-top: 5%;
     margin-bottom: 5%;
+    color: white;
 }
 
 h1,
@@ -109,10 +110,10 @@ ul {
 
     }
 }
-h1 {
+.neon-flashing {
     animation: neonBorderPurple 1.5s infinite alternate;
 }
-h1 span 
+.neon-flashing span 
 {
     animation: neonBorderBlue 1.5s infinite alternate;
 }
@@ -126,6 +127,7 @@ main {
 
 .container {
     display: flex;
+    margin-bottom: 5%;
 
 }
 
@@ -189,6 +191,7 @@ main {
 
     h1 {
         font-size: 1.5em;
+        
     }
 
     .container {

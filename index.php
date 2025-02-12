@@ -8,8 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Night Quiz </title>
-    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/normalize.css">
+    <link rel="stylesheet" href="style/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,7 @@ session_start();
 </head>
 
 <body>
+    <header>
     <nav class="navbar mobile">
         <div class="navbar-container">
             <input type="checkbox" id="navbar-toggle">
@@ -40,11 +41,12 @@ session_start();
                 <li><a href="user.php">Profil</a></li>
             </ul>
 
-        </div>
-        </div>
     </nav>
+    <h1 class="neon-title neon-flashing">Quiz <span>Night</span></h1>
+
+    </header>
+
     <main>
-        <h1 class="neon-title">Quiz <span>Night</span></h1>
 
         <p>Êtes-vous prêt à tester vos connaissances et à relever des défis passionnants ?
             À vous de jouer !</p>

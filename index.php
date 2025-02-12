@@ -1,5 +1,6 @@
 <?php
 session_start();
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,29 +21,44 @@ session_start();
 
 <body>
     <header>
-    <nav class="navbar mobile">
-        <div class="navbar-container">
-            <input type="checkbox" id="navbar-toggle">
-            <label for="navbar-toggle" class="navbar-icon">&#9776;</label>
-            <div class="navbar-menu">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="user.php">Profil</a>
+        <nav class="navbar mobile">
+            <div class="navbar-container">
+                <input type="checkbox" id="navbar-toggle">
+                <label for="navbar-toggle" class="navbar-icon">&#9776;</label>
+                <div class="navbar-menu">
+                    <a href="index.php">Accueil</a>
+                    <a href="#about">About</a>
+                    <a href="user.php">Profil</a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <nav class="navbar desktop">
-        <div class="navbar-container">
-            <input type="checkbox" id="navbar-toggle">
-            <ul class="navbar-menu">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="user.php">Profil</a></li>
-            </ul>
+        <nav class="navbar desktop">
+            <div class="navbar-container">
+                <input type="checkbox" id="navbar-toggle">
+                <ul class="navbar-menu">
 
-    </nav>
-    <h1 class="neon-title neon-flashing">Quiz <span>Night</span></h1>
+                    <li>
+                        <a href="#home">Accueil</a>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="user.php">Profil</a></li>
+
+                    </li>
+
+                    <?php if (!isset($_SESSION['username'])) {
+                        echo "<li><a href='login.php'>Connexion</a></li>";
+                        echo "<li><a href='register.php'>S'inscrire</a></li>";
+                    } else {
+
+                        echo "<li><a href='#'>" . $_SESSION['username'] . "</a></li>";
+                        echo "<li><a href='deconnexion.php'>Déconnexion</a></li>";
+                    }
+                    ?>
+
+                </ul>
+
+        </nav>
+        <h1 class="neon-title neon-flashing">Quiz <span>Night</span></h1>
 
     </header>
 

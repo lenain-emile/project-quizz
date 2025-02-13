@@ -7,7 +7,6 @@ class Database {
     private $password = '';
     private $pdo;
 
-    
     public function __construct() {
         try {
             $this->pdo = new PDO(
@@ -25,7 +24,7 @@ class Database {
         $query = 'SELECT id, nom FROM categories'; 
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function addQuestion($question, $category) {
@@ -35,9 +34,22 @@ class Database {
             ':question' => $question,
             ':category' => $category
         ]);
+        return $this->pdo->lastInsertId();
     }
 
-    
+    public function addResponse($question_id, $response_text, $is_correct) {
+        if (empty($response_text)) {
+            throw new InvalidArgumentException('Response text cannot be empty.');
+        }
+
+        $query = "INSERT INTO `reponses` (`question_id`, `reponse_text`, `est_correct`) VALUES (:question_id, :response_text, :is_correct)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+            ':question_id' => $question_id,
+            ':response_text' => $response_text,
+            ':is_correct' => $is_correct
+        ]);
+    }
 }
 
 

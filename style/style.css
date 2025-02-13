@@ -20,11 +20,19 @@ h1 {
 
 h1,
 h2,
+h3,
 p,
 a {
     font-family: 'Outfit';
 }
 
+h3 {
+    color: white;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 2em;
+}
 /* FORM  */
 form {
     align-self: center;

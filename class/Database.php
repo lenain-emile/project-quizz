@@ -3,7 +3,7 @@ session_start();
 
 class Database {
     private $host    = 'localhost';  
-    private $name    = 'quiz-night';
+    private $name    = 'quiz';
     private $user    = 'root';        
     private $pass    = '';     
     private $connexion;

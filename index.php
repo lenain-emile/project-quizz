@@ -69,40 +69,43 @@ var_dump($_SESSION);
         <div class="container">
             <div class="item">
 
-                <a href="#"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Manga</h2>
+                <a href="questions.php?id_category=1"><img src="image/quizz.png" alt="Description of image"></a>
+                <h2>Histoire</h2>
             </div>
 
             <div class="item">
 
-                <a href="#"><img src="image/quizz.png" alt="Description of image"></a>
+                <a href="questions.php?id_category=2"><img src="image/quizz.png" alt="Description of image"></a>
                 <h2>Football</h2>
             </div>
             <div class="item">
 
-                <a href="#"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Serie TV</h2>
+                <a href="questions.php?id_category=3"><img src="image/quizz.png" alt="Description of image"></a>
+                <h2>Géographie</h2>
             </div>
         </div>
 
         <div class="container">
             <div class="item">
 
-                <a href="#"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Titre 4</h2>
+                <a href="questions.php?id_category=4"><img src="image/quizz.png" alt="Description of image"></a>
+                <h2>Jeux-vidéo</h2>
             </div>
             <div class="item">
 
-                <a href="#"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Titre 5</h2>
+                <a href="questions.php?id_category=5"><img src="image/quizz.png" alt="Description of image"></a>
+                <h2>Musique</h2>
             </div>
             <div class="item">
 
-                <a href="#"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Titre 6</h2>
+                <a href="questions.php?id_category=6"><img src="image/quizz.png" alt="Description of image"></a>
+                <h2>Mangas</h2>
             </div>
         </div>
     </main>
 </body>
-
+<?php
+?>
 </html>
+<?php
+

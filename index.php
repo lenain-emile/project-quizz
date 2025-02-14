@@ -28,7 +28,7 @@
             <a href="user.php">Contact</a>
         </div>
     </div>
-    <a href="profile.php"><img src="image/icon.png" alt="Profil" class="icon"></a>
+    <a href="creation.php"><img src="image/icon.png" alt="Profil" class="icon"></a>
 </nav>
 <main>
 <h1 class="neon-title">Quiz <span>Night</span></h1>

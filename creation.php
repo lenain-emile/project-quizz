@@ -1,13 +1,17 @@
 <?php
 include_once 'class/database.php';
 
+
+
 $database = new Database();
 $categories = $database->getCategories();
+
+
 
 // Add question
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $question = $_POST['Question'];
-    $category = isset($_POST['category']) ? $_POST['category'] : null;
+    $category = $_POST['category'] ?? null;
 
     if ($category) {
         $questionId = $database->addQuestion($question, $category);
@@ -34,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Veuillez sélectionner une catégorie.";
     }
 
+ 
 ?>
 
 <form method="post" action="">
@@ -46,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </select>
     <br>
     <label for="Question">Question:</label>
+    <br>
     <textarea name="Question" id="Question" required></textarea>
     <br>
     <label for="choix1">Choix 1:</label>

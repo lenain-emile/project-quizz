@@ -11,7 +11,7 @@ class Quiz {
         $this->db = $db;
         $this->categoryId = $categoryId;
         $this->points = isset($_SESSION['points']) ? $_SESSION['points'] : 0;
-        $this->currentQuestionIndex = isset($_SESSION['currentQuestionIndex']) ? $_SESSION['currentQuestionIndex'] : 0;
+        $this->currentQuestionIndex = isset($_SESSION['currentQuestionIndex']) ? $_SESSION['currentQuestionIndex'] : 1;
         $this->totalQuestionsAnswered = isset($_SESSION['totalQuestionsAnswered']) ? $_SESSION['totalQuestionsAnswered'] : 0;
     }
     
@@ -20,22 +20,22 @@ class Quiz {
         $sql = "SELECT est_correct FROM reponses WHERE id = :answer_id";
         $selectedAnswer = $this->db->query($sql, ['answer_id' => $selectedAnswerId])->fetch(PDO::FETCH_ASSOC);
         // If the answer is correct, increment points
+
         if ($selectedAnswer && $selectedAnswer['est_correct']) {
             $this->points++;
             $_SESSION['points'] = $this->points;
-            $message = "Points : {$this->points}";
-        } else {
-            $message = "Points : {$this->points}";
         }
 
         // Increment the total number of questions answered
         $this->totalQuestionsAnswered++;
         $_SESSION['totalQuestionsAnswered'] = $this->totalQuestionsAnswered;
+        $message = "Points : {$this->points} </br> Question  {$this->currentQuestionIndex} / 10";
+
 
         // Check if the quiz is finished
-        if ($this->totalQuestionsAnswered >= 10) {
-            $message = "Terminé ! Vous avez un total de {$this->points} points";
-            session_destroy(); // End the session
+        if ($this->totalQuestionsAnswered == 10) {
+            $message = "Terminé ! Vous avez un total de {$this->points} points </br> Question {$this->totalQuestionsAnswered} / 10";
+
         } else {
             // Move to the next question
             $this->currentQuestionIndex++;
@@ -54,7 +54,7 @@ class Quiz {
             $question = $questions[$this->currentQuestionIndex % count($questions)];
             return $question;
         }
-        return null; // Return null if no question is found
+        return null; 
     }
 
 
@@ -81,12 +81,26 @@ class Quiz {
         return $answers; // Return the answers
     }
 
-        public function getTotalQuestionsAnswered() {
-            return $this->totalQuestionsAnswered;
+        public function getcurrentQuestionsAnswered() {
+            return $this->currentQuestionIndex;
         }
     
         public function getPoints() {
             return $this->points;
         }
-}
-?>
+        public function getTotalQuestionsAnswered()
+        {
+            return $this->totalQuestionsAnswered;
+        }
+
+        public function resetQuizStats() {
+            $this->points = 0;
+            $this->currentQuestionIndex = 1;
+            $this->totalQuestionsAnswered = 0;
+            $_SESSION['points'] = 0;
+            $_SESSION['currentQuestionIndex'] = 1;
+            $_SESSION['totalQuestionsAnswered'] = 0;
+        }
+
+}      
+?> 

@@ -2,10 +2,11 @@
 include 'class/Database.php';
 include 'class/Quiz.php';
 
+
 $categoryId = isset($_GET['id_category']) ? intval($_GET['id_category']) : 0;
 $db = new Database();
 $quiz = new Quiz($db, $categoryId);
-
+var_dump($_SESSION);
 if ($_POST) {
     $selectedAnswerId = isset($_POST['answer']) ? intval($_POST['answer']) : 0;
     $message = $quiz->processAnswer($selectedAnswerId);
@@ -74,10 +75,9 @@ unset($_SESSION['message']);
         <h2 class="neon-title neon-flashing"><?= $category['nom'] ?></h2>
         <div class="container-questions">
             <?php if (!empty($question) && $quiz->getTotalQuestionsAnswered() < 10) { ?>
-                <?php if (isset($message)) {
-                    echo "<p>$message</p>";
-                } ?>
 
+                <p>Points: <?= $quiz->getPoints() ?></p>
+                <p>Question: <?= $quiz->getTotalQuestionsAnswered() + 1 ?> / 10</p>
                 <form method="post">
                     <div class="question">
                         <h3 class="question"><?= htmlspecialchars($question['question_text']) ?></h3>
@@ -95,7 +95,10 @@ unset($_SESSION['message']);
                 </form>
             <?php } elseif ($quiz->getTotalQuestionsAnswered() >= 10) { ?>
                 <p>Le quiz est terminé ! Vous avez <?= $quiz->getPoints() ?> points</p>
-            <?php } else { ?>
+                <a href="index.php" class="button">Retour à l'accueil</a>
+                <a href="questions.php?id_category=<?= $categoryId ?>" class="button">Recommencer le quiz</a>
+            <?php $quiz->resetQuizStats();
+            } else { ?>
                 <p>Aucune question trouvée pour cette catégorie.</p>
             <?php } ?>
         </div>

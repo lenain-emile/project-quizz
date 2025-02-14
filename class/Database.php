@@ -3,7 +3,7 @@ session_start();
 
 class Database {
     private $host    = 'localhost';  
-    private $name    = 'quiz';
+    private $name    = 'quizz';
     private $user    = 'root';        
     private $pass    = '';     
     private $connexion;
@@ -40,7 +40,7 @@ public function insert($sql, $data = array()){
   
   }
 }
-$DB = new Database();
+$db = new Database();
 
 /*
     $pdo = new PDO('mysql:host=localhost;dbname=user_management', 'root', '',);

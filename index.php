@@ -1,5 +1,9 @@
 <?php
 session_start();
+$_SESSION['points'] = 0;
+$_SESSION['totalQuestionsAnswered'] = 0;
+$_SESSION['currentQuestionIndex'] = 0;
+
 var_dump($_SESSION);
 ?>
 <!DOCTYPE html>

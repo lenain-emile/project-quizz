@@ -33,6 +33,19 @@ h3 {
     margin-bottom: 5%;
     font-size: 2em;
 }
+.container-questions
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.answers
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
 /* FORM  */
 form {
     align-self: center;
@@ -263,6 +276,11 @@ main {
 
 /* v MEDIA QUERIES v */
 @media (max-width: 576px) {
+.answers
+{
+    flex-direction: column;
+}
+
     .mobile {
         display: block;
     }
@@ -335,4 +353,12 @@ main {
         margin-bottom: 10%;
 
     }
+
+    .answers
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
 }

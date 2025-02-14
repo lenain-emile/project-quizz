@@ -5,7 +5,7 @@ $categoryId = isset($_GET['id_category']) ? intval($_GET['id_category']) : 0;
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : 0;
 $currentQuestionIndex = isset($_SESSION['currentQuestionIndex']) ? $_SESSION['currentQuestionIndex'] : 0;
 $totalQuestionsAnswered = isset($_SESSION['totalQuestionsAnswered']) ? $_SESSION['totalQuestionsAnswered'] : 0;
-
+//
 if ($_POST) {
     $selectedAnswerId = isset($_POST['answer']) ? intval($_POST['answer']) : 0;
     $sql = "SELECT est_correct FROM reponses WHERE id = :answer_id";
@@ -20,7 +20,7 @@ if ($_POST) {
     $_SESSION['totalQuestionsAnswered'] = $totalQuestionsAnswered;
 
     if ($totalQuestionsAnswered >= 10) {
-        $message = "Quiz finished! Your total points: $points";
+        $message = "Terminé ! Vous avez un total de  $points points";
         session_destroy();
     } else {
         $currentQuestionIndex++;
@@ -34,7 +34,7 @@ if ($categoryId > 0 && $totalQuestionsAnswered < 10) {
     $question = $questions[$currentQuestionIndex % count($questions)];
     $sql = "SELECT nom FROM categories WHERE id = :category_id";
     $category = $DB->query($sql, ['category_id' => $categoryId])->fetch(PDO::FETCH_ASSOC);
-
+    // We get the correct answer first, then we select three other answers, and we randomize to prevent giving the correct answer at the first position
     // Fetch the correct answer
     $sql = "SELECT * FROM reponses WHERE question_id = :question_id AND est_correct = 1";
     $correctAnswer = $DB->query($sql, ['question_id' => $question['id']])->fetch(PDO::FETCH_ASSOC);
@@ -45,7 +45,7 @@ if ($categoryId > 0 && $totalQuestionsAnswered < 10) {
 
     // Combine the correct answer with the incorrect answers
     $answers = array_merge([$correctAnswer], $incorrectAnswers);
-    shuffle($answers); // Shuffle the answers to randomize their order
+    shuffle($answers); // Randomize the order of the answers
 } else {
     $questions = [];
 }
@@ -119,10 +119,10 @@ if ($categoryId > 0 && $totalQuestionsAnswered < 10) {
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Envoyer la réponse</button>
                 </form>
             <?php elseif ($totalQuestionsAnswered >= 10): ?>
-                <p>Le quiz est terminé ! Vous avez  <?= $points ?></p>
+                <p>Le quiz est terminé ! Vous avez  <?= $points ?> points</p>
             <?php else: ?>
                 <p>Aucune question trouvée pour cette catégorie.</p>
             <?php endif; ?>

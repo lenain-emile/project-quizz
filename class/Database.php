@@ -39,6 +39,10 @@ public function insert($sql, $data = array()){
     $statement->execute($data);
   
   }
+
+  public function lastInsertId() {
+    return $this->connexion->lastInsertId();
+}
 }
 $db = new Database();
 

@@ -5,10 +5,9 @@ class Category {
     private $id;
     private $name;
 
-    public function __construct($db, $id) {
+    public function __construct($db, $id = null) {
         $this->db = $db;
         $this->id = $id;
-        $this->fetchCategory();
     }
 
     private function fetchCategory() {
@@ -16,6 +15,12 @@ class Category {
         $category = $this->db->query($sql, ['category_id' => $this->id])->fetch(PDO::FETCH_ASSOC);
         $this->name = $category['nom'];
     }
+
+    public function fetchAll() {
+        $sql = "SELECT * FROM categories";
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 
     public function getName() {
         return $this->name;

@@ -15,7 +15,6 @@ class Quiz {
         $this->totalQuestionsAnswered = isset($_SESSION['totalQuestionsAnswered']) ? $_SESSION['totalQuestionsAnswered'] : 0;
     }
     
-    // Method to process the selected answer
     public function processAnswer($selectedAnswerId) {
         // Query to check if the selected answer is correct
         $sql = "SELECT est_correct FROM reponses WHERE id = :answer_id";
@@ -43,10 +42,9 @@ class Quiz {
             $_SESSION['currentQuestionIndex'] = $this->currentQuestionIndex;
         }
 
-        return $message; // Return the message to be displayed
+        return $message;
     }
 
-    // Method to get the current question
     public function getQuestion() {
         if ($this->categoryId > 0 && $this->totalQuestionsAnswered < 10) {
             // Query to get all questions in the selected category
@@ -59,7 +57,7 @@ class Quiz {
         return null; // Return null if no question is found
     }
 
-    // Method to get the category name
+
     public function getCategory() {
         // Query to get the category name
         $sql = "SELECT nom FROM categories WHERE id = :category_id";
@@ -67,7 +65,6 @@ class Quiz {
         return $category;
     }
 
-    // Method to get the answers for the current question
     public function getAnswers($questionId) {
         // Fetch the correct answer
         $sql = "SELECT * FROM reponses WHERE question_id = :question_id AND est_correct = 1";
@@ -84,12 +81,10 @@ class Quiz {
         return $answers; // Return the answers
     }
 
-        // Getter method for totalQuestionsAnswered
         public function getTotalQuestionsAnswered() {
             return $this->totalQuestionsAnswered;
         }
     
-        // Getter method for points
         public function getPoints() {
             return $this->points;
         }

@@ -7,6 +7,7 @@ include_once 'class/Category.php';
 
 $db = new Database();
 $categories = new Category($db);
+$categories = $categories->fetchAll();
 
 
 
@@ -15,7 +16,6 @@ $categories = new Category($db);
 if ($_POST) {
     $questionPost = $_POST['Question'];
     $category = $_POST['category'] ?? null;
-    $categories = $categories->fetchAll();
     $question = new Question($db, $category);
     if ($category) {
         $questionId = $question->addQuestion($questionPost, $category);

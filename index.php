@@ -3,9 +3,14 @@ session_start();
 $_SESSION['points'] = 0;
 $_SESSION['totalQuestionsAnswered'] = 0;
 $_SESSION['currentQuestionIndex'] = 0;
+
 include 'class/Database.php';
 include 'class/Category.php';
-var_dump($_SESSION);
+
+$db = new Database();
+$category = new Category($db);
+$categories = $category->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,10 +23,8 @@ var_dump($_SESSION);
     <link rel="stylesheet" href="style/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=League+Script&display=swap" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -42,75 +45,45 @@ var_dump($_SESSION);
             <div class="navbar-container">
                 <input type="checkbox" id="navbar-toggle">
                 <ul class="navbar-menu">
-
-                    <li>
-                        <a href="#home">Accueil</a>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="user.php">Profil</a></li>
-
-                    </li>
-
-                    <?php if (!isset($_SESSION['username'])) {
-                        echo "<li><a href='login.php'>Connexion</a></li>";
-                        echo "<li><a href='register.php'>S'inscrire</a></li>";
-                    } else {
-
-                        echo "<li><a href='#'>" . $_SESSION['username'] . "</a></li>";
-                        echo "<li><a href='deconnexion.php'>Déconnexion</a></li>";
-                    }
-                    ?>
-
+                    <?php if (!isset($_SESSION['username'])) { ?>
+                        <li><a href="login.php">Connexion</a></li>
+                        <li><a href="register.php">S'inscrire</a></li>
+                    <?php } else { ?>
+                        <li><a href="#"><?= $_SESSION['username'] ?></a></li>
+                        <li><a href="deconnexion.php">Déconnexion</a></li>
+                    <?php } ?>
                 </ul>
-
+            </div>
         </nav>
         <h1 class="neon-title neon-flashing">Quiz <span>Night</span></h1>
-
     </header>
 
     <main>
-
-        <p>Êtes-vous prêt à tester vos connaissances et à relever des défis passionnants ?
-            À vous de jouer !</p>
-        <div class="container">
-            <div class="item">
-
-                <a href="questions.php?id_category=1"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Histoire</h2>
-            </div>
-
-            <div class="item">
-
-                <a href="questions.php?id_category=2"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Football</h2>
-            </div>
-            <div class="item">
-
-                <a href="questions.php?id_category=3"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Géographie</h2>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="item">
-
-                <a href="questions.php?id_category=4"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Jeux-vidéo</h2>
-            </div>
-            <div class="item">
-
-                <a href="questions.php?id_category=5"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Musique</h2>
-            </div>
-            <div class="item">
-
-                <a href="questions.php?id_category=6"><img src="image/quizz.png" alt="Description of image"></a>
-                <h2>Mangas</h2>
-            </div>
-        </div>
+        <p>Êtes-vous prêt à tester vos connaissances et à relever des défis passionnants ? À vous de jouer !</p>
+            <?php 
+            $counter = 0;
+            foreach ($categories as $category) { 
+                if ($counter % 3 == 0) {
+                    if ($counter > 0) {
+                        echo '</div>'; 
+                    }
+                    echo '<div class="container">';
+                }
+                ?>
+                <div class="item">
+                    <a href="questions.php?id_category=<?= $category['id'] ?>"><img src="image/quizz.png" alt="Description of image"></a>
+                    <h2><?= htmlspecialchars($category['nom']) ?></h2>
+                </div>
+                <?php 
+                $counter++;
+            } 
+            if ($counter > 0) {
+                echo '</div>';
+            }
+            ?>
     </main>
 </body>
-<?php
-?>
 </html>
-<?php
-

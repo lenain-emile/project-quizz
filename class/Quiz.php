@@ -20,6 +20,11 @@ class Quiz
         $this->question = new Question($db, $categoryId);
     }
 
+    public static function resetQuiz() {
+        $_SESSION['totalQuestionsAnswered'] = 0;
+        $_SESSION['currentQuestionIndex'] = 0;
+        $_SESSION['points'] = 0;
+    }
     public function processAnswer($selectedAnswerId)
     {
         // Query to check if the selected answer is correct

@@ -21,8 +21,7 @@ class User
             header('Location: ../index.php');
             exit;
         } else {
-            var_dump($sql);
-            echo 'Invalid username or password';
+            echo "Nom d'utilisateur ou mot de passe incorrect";
         }
     }
 
@@ -38,7 +37,6 @@ class User
 }
 $user = new User($db);
 /* We check if the submitted form is a Login or Register form, then call the corresponding method */
-var_dump($_POST);
 if ($_POST && isset($_GET['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];

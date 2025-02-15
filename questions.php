@@ -4,12 +4,18 @@ session_start();
 include 'class/Database.php';
 include 'class/Quiz.php';
 include 'class/Question.php';
+var_dump($_SESSION);
 
 
 $categoryId = isset($_GET['id_category']) ? intval($_GET['id_category']) : 0;
 $db = new Database();
 $quiz = new Quiz($db, $categoryId);
 
+if (isset($_GET['reset']) && $_GET['reset'] == 1) {
+    Quiz::resetQuiz();
+    header("Location: questions.php?id_category=$categoryId");
+    exit;
+}
 if ($_POST) {
     $selectedAnswerId = isset($_POST['answer']) ? intval($_POST['answer']) : 0;
     $message = $quiz->processAnswer($selectedAnswerId);
@@ -106,8 +112,7 @@ unset($_SESSION['message']);
             <?php } elseif ($quiz->getTotalQuestionsAnswered() >= 10) { ?>
                 <p>Le quiz est terminé ! Vous avez <?= $quiz->getPoints() ?> points</p>
                 <a href="index.php" class="button">Retour à l'accueil</a>
-                <a href="questions.php?id_category=<?= $categoryId ?>" class="button">Recommencer le quiz</a>
-            <?php } else { ?>
+                <a href="questions.php?id_category=<?= $categoryId ?>&reset=1" class="button">Recommencer le quiz</a> <?php } else { ?>
                 <p>Aucune question trouvée pour cette catégorie.</p>
             <?php } ?>
         </div>

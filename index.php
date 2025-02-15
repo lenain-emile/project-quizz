@@ -1,15 +1,14 @@
 <?php
 session_start();
-//$_SESSION['points'] = 0;
-//$_SESSION['totalQuestionsAnswered'] = 0;
-//$_SESSION['currentQuestionIndex'] = 0;
 
 include 'class/Database.php';
 include 'class/Category.php';
-
+include 'class/Quiz.php';
+Quiz::resetQuiz();
 $db = new Database();
 $category = new Category($db);
 $categories = $category->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

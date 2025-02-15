@@ -2,7 +2,10 @@
 session_start();
 include 'class/Database.php';
 include 'class/Category.php';
-
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 $category = new Category($db);
 
 if ($_POST) {

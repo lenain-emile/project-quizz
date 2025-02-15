@@ -4,7 +4,10 @@ include_once 'class/Database.php';
 include_once 'class/Question.php';
 include_once 'class/Quiz.php';
 include_once 'class/Category.php';
-
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 $db = new Database();
 $categories = new Category($db);
 $categories = $categories->fetchAll();

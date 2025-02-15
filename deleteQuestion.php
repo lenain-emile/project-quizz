@@ -1,7 +1,10 @@
 <?php
 include_once 'class/Database.php';
 include_once 'class/Question.php';
-
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 $db = new Database();
 $questionId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $question = new Question($db, null); // Pass null for categoryId as it's not needed here

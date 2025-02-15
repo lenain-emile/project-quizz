@@ -1,6 +1,9 @@
 <?php
 session_start();
-
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 include_once 'class/Database.php';
 include_once 'class/Question.php';
 include_once 'class/Category.php';

@@ -79,6 +79,15 @@ class Question
         ]);
     }
 
+    public function getAnswersByQuestionId($questionId) {
+        $sql = "SELECT * FROM reponses WHERE question_id = :question_id";
+        return $this->db->query($sql, ['question_id' => $questionId])->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateAnswer($answerId, $answerText, $isCorrect) {
+        $sql = "UPDATE reponses SET reponse_text = :answerText, est_correct = :isCorrect WHERE id = :id";
+        $this->db->query($sql, ['answerText' => $answerText, 'isCorrect' => $isCorrect, 'id' => $answerId]);
+    }
 
 
     public function fetchAll() {

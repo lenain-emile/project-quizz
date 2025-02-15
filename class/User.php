@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'Database.php';
 
 class User {
@@ -34,7 +35,7 @@ class User {
 }
 $user = new User($db);
 /* We check if the submitted form is a Login or Register form, then call the corresponding method */
-
+var_dump($_POST);
 if ($_POST && isset($_GET['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];

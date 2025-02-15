@@ -1,35 +1,36 @@
 <?php
 session_start();
-//$_SESSION['points'] = 0;
-//$_SESSION['totalQuestionsAnswered'] = 0;
-//$_SESSION['currentQuestionIndex'] = 0;
-
 include 'class/Database.php';
-include 'class/Category.php';
-
+include 'class/Question.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
 $db = new Database();
-$category = new Category($db);
-$categories = $category->fetchAll();
-var_dump($_SESSION);
+$question = new Question($db, null);
+$questions = $question->fetchAll();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Night Quiz </title>
+    <meta name="description" content="Admin Page - Quizz Night">
+    <title>Page d'administration</title>
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=League+Script&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <nav class="navbar mobile">
+    <nav class="navbar mobile">
             <div class="navbar-container">
                 <input type="checkbox" id="navbar-toggle">
                 <label for="navbar-toggle" class="navbar-icon">&#9776;</label>
@@ -61,32 +62,33 @@ var_dump($_SESSION);
                 </ul>
             </div>
         </nav>
-        <h1 class="neon-title neon-flashing">Quiz <span>Night</span></h1>
+        <h1>Admin Page - Quizz Night</h1>
     </header>
 
     <main>
-        <p>Êtes-vous prêt à tester vos connaissances et à relever des défis passionnants ? À vous de jouer !</p>
-            <?php 
-            $counter = 0;
-            foreach ($categories as $category) { 
-                if ($counter % 3 == 0) {
-                    if ($counter > 0) {
-                        echo '</div>'; 
-                    }
-                    echo '<div class="container">';
-                }
-                ?>
-                <div class="item">
-                    <a href="questions.php?id_category=<?= $category['id'] ?>"><img src="image/quizz.png" alt="Description of image"></a>
-                    <h2><?= htmlspecialchars($category['nom']) ?></h2>
-                </div>
-                <?php 
-                $counter++;
-            } 
-            if ($counter > 0) {
-                echo '</div>';
-            }
-            ?>
+        <table class="neon-flashing-box">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Category</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($questions as $question): ?>
+                    <tr>
+                        <td><?= $question['id'] ?></td>
+                        <td><?= htmlspecialchars($question['question_text']) ?></td>
+                        <td><?= htmlspecialchars($question['category_name']) ?></td>
+                        <td><a href="updateQuestion.php?id=<?= $question['id'] ?>">Modifier</a></td>
+                        <td><a href="deleteQuestion.php?id=<?= $question['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette question?')">Supprimer</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </main>
 </body>
+
 </html>

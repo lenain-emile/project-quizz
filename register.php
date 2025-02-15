@@ -22,14 +22,19 @@ session_start();
 
 <body>
     <header>
-        <nav class="navbar mobile">
+    <nav class="navbar mobile">
             <div class="navbar-container">
                 <input type="checkbox" id="navbar-toggle">
                 <label for="navbar-toggle" class="navbar-icon">&#9776;</label>
                 <div class="navbar-menu">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="user.php">Profil</a>
+                    <a href="index.php">Accueil</a>
+                    <?php if (!isset($_SESSION['username'])) { ?>
+                        <a href="login.php">Connexion</a>
+                        <a href="register.php">S'inscrire</a>
+                    <?php } else { ?>
+                        <a href="adminPage.php"><?= "Page d'administration" ?></a>
+                        <a href="deconnexion.php">Déconnexion</a>
+                    <?php } ?>
                 </div>
             </div>
         </nav>
@@ -39,10 +44,15 @@ session_start();
                 <input type="checkbox" id="navbar-toggle">
                 <ul class="navbar-menu">
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="user.php">Profil</a></li>
+                    <?php if (!isset($_SESSION['username'])) { ?>
+                        <li><a href="login.php">Connexion</a></li>
+                        <li><a href="register.php">S'inscrire</a></li>
+                    <?php } else { ?>
+                        <li><a href="adminPage.php"><?= "Page d'administration" ?></a></li>
+                        <li><a href="deconnexion.php">Déconnexion</a></li>
+                    <?php } ?>
                 </ul>
-
+            </div>
         </nav>
         <h1>Inscription </h1>
 

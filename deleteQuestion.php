@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'class/Database.php';
 include_once 'class/Question.php';
 if (!isset($_SESSION['username'])) {

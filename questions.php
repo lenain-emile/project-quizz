@@ -1,9 +1,10 @@
 <?php
+session_start();
+
 include 'class/Database.php';
 include 'class/Quiz.php';
 include 'class/Question.php';
 
-session_start();
 
 $categoryId = isset($_GET['id_category']) ? intval($_GET['id_category']) : 0;
 $db = new Database();

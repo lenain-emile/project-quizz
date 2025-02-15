@@ -12,4 +12,3 @@ if ($questionId) {
     header('Location: adminPage.php');
     exit;
 }
-?>

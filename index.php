@@ -65,27 +65,28 @@ $categories = $category->fetchAll();
 
     <main>
         <p>Êtes-vous prêt à tester vos connaissances et à relever des défis passionnants ? À vous de jouer !</p>
-            <?php 
-            $counter = 0;
-            foreach ($categories as $category) { 
-                if ($counter % 3 == 0) {
-                    if ($counter > 0) {
-                        echo '</div>'; 
-                    }
-                    echo '<div class="container">';
+        <?php
+        $counter = 0;
+        foreach ($categories as $category) {
+            if ($counter % 3 == 0) {
+                if ($counter > 0) {
+                    echo '</div>';
                 }
-                ?>
-                <div class="item">
-                    <a href="questions.php?id_category=<?= $category['id'] ?>"><img src="image/quizz.png" alt="Description of image"></a>
-                    <h2><?= htmlspecialchars($category['nom']) ?></h2>
-                </div>
-                <?php 
-                $counter++;
-            } 
-            if ($counter > 0) {
-                echo '</div>';
+                echo '<div class="container">';
             }
-            ?>
+        ?>
+            <div class="item">
+                <a href="questions.php?id_category=<?= $category['id'] ?>"><img src="image/quizz.png" alt="Description of image"></a>
+                <h2><?= htmlspecialchars($category['nom']) ?></h2>
+            </div>
+        <?php
+            $counter++;
+        }
+        if ($counter > 0) {
+            echo '</div>';
+        }
+        ?>
     </main>
 </body>
+
 </html>

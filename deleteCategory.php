@@ -11,4 +11,3 @@ if ($categoryId) {
     header('Location: adminPage.php');
     exit;
 }
-?>

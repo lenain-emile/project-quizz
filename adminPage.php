@@ -75,50 +75,50 @@ $categories = $category->fetchAll();
             <a href="addCategory.php">Ajouter une catégorie</a>
         </div>
         <h2>Questions</h2>
-            <table class="neon-flashing-box">
-                <thead>
+        <table class="neon-flashing-box">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Catégorie</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($questions as $question): ?>
                     <tr>
-                        <th>ID</th>
-                        <th>Question</th>
-                        <th>Category</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <td><?= $question['id'] ?></td>
+                        <td><?= htmlspecialchars($question['question_text']) ?></td>
+                        <td><?= htmlspecialchars($question['category_name']) ?></td>
+                        <td><a href="updateQuestion.php?id=<?= $question['id'] ?>">Modifier</a></td>
+                        <td><a href="deleteQuestion.php?id=<?= $question['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette question?')">Supprimer</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($questions as $question): ?>
-                        <tr>
-                            <td><?= $question['id'] ?></td>
-                            <td><?= htmlspecialchars($question['question_text']) ?></td>
-                            <td><?= htmlspecialchars($question['category_name']) ?></td>
-                            <td><a href="updateQuestion.php?id=<?= $question['id'] ?>">Modifier</a></td>
-                            <td><a href="deleteQuestion.php?id=<?= $question['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette question?')">Supprimer</a></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
         <h2>Catégories</h2>
-            <table class="neon-flashing-box">
-                <thead>
+        <table class="neon-flashing-box">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Catégorie</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($categories as $category): ?>
                     <tr>
-                        <th>ID</th>
-                        <th>Nom</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <td><?= $category['id'] ?></td>
+                        <td><?= htmlspecialchars($category['nom']) ?></td>
+                        <td><a href="updateCategory.php?id=<?= $category['id'] ?>">Modifier</a></td>
+                        <td><a href="deleteCategory.php?id=<?= $category['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie?')">Supprimer</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($categories as $category): ?>
-                        <tr>
-                            <td><?= $category['id'] ?></td>
-                            <td><?= htmlspecialchars($category['nom']) ?></td>
-                            <td><a href="updateCategory.php?id=<?= $category['id'] ?>">Modifier</a></td>
-                            <td><a href="deleteCategory.php?id=<?= $category['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie?')">Supprimer</a></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </main>
 </body>
 

@@ -2,14 +2,17 @@
 session_start();
 include 'Database.php';
 
-class User {
+class User
+{
     private $db;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->db = $db;
     }
 
-    public function login($username, $password) {
+    public function login($username, $password)
+    {
         $sql = "SELECT * FROM users WHERE user_name = :username";
         $result = $this->db->query($sql, ['username' => $username])->fetch(PDO::FETCH_ASSOC);
 
@@ -23,7 +26,8 @@ class User {
         }
     }
 
-    public function register($username, $password) {
+    public function register($username, $password)
+    {
         $sql = "INSERT INTO users (user_name, user_password) VALUES (:username, :password)";
         $password = password_hash($password, PASSWORD_DEFAULT);
         $this->db->insert($sql, ['username' => $username, 'password' => $password]);
@@ -31,7 +35,6 @@ class User {
         header('Location: ../index.php');
         exit;
     }
-    
 }
 $user = new User($db);
 /* We check if the submitted form is a Login or Register form, then call the corresponding method */

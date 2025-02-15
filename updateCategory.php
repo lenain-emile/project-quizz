@@ -1,6 +1,7 @@
 <?php
-include 'class/Database.php';
+session_start();
 
+include 'class/Database.php';
 include 'class/Category.php';
 
 $categoryId = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -10,7 +11,6 @@ $categoryData = $category->getCategoryById($categoryId);
 if ($_POST) {
     $categoryName = $_POST['category_name'];
     $category->updateCategory($categoryId, $categoryName);
-    echo "Catégorie mise à jour avec succès !";
     header('Location: adminPage.php');
     exit;
 }

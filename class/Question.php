@@ -79,13 +79,7 @@ class Question
         ]);
     }
 
-   /* public function fetchAll()
-    {
-        $sql = "SELECT * FROM questions";
-        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-    }
 
-    */
 
     public function fetchAll() {
         $sql = "SELECT questions.id, questions.question_text, categories.nom AS category_name
@@ -93,11 +87,10 @@ class Question
                 JOIN categories ON questions.categorie_id = categories.id";
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function deleteQuestion($id)
-    {
+    public function deleteQuestion($id) {
+        $sql = "DELETE FROM reponses WHERE question_id = :id";
+        $this->db->query($sql, ['id' => $id]);
         $sql = "DELETE FROM questions WHERE id = :id";
-        $statement = $this->db->query($sql, ['id' => $id]);
-        var_dump($statement);
-        return $statement->execute(['id' => $id]);
+        $this->db->query($sql, ['id' => $id]);
     }
 }

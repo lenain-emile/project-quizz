@@ -41,7 +41,7 @@ unset($_SESSION['message']);
 
 <body>
     <header>
-    <nav class="navbar mobile">
+        <nav class="navbar mobile">
             <div class="navbar-container">
                 <input type="checkbox" id="navbar-toggle">
                 <label for="navbar-toggle" class="navbar-icon">&#9776;</label>

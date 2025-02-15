@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once 'class/Database.php';
 include_once 'class/Question.php';
 include_once 'class/Category.php';
@@ -18,9 +20,8 @@ if ($_POST) {
         if($question->updateQuestion($questionId, $questionText)) {
             header('Location: adminPage.php');
         }
-        echo "Question mise à jour avec succès !";
     } else {
-        echo "Veuillez sélectionner une catégorie.";
+        echo "Une erreur est survenue";
     }
 }
 ?>

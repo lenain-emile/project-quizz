@@ -1,6 +1,7 @@
 <?php
 
-class Quiz {
+class Quiz
+{
     private $db;
     private $categoryId;
     private $points = 0;
@@ -9,7 +10,8 @@ class Quiz {
     private $question;
 
     // Constructor to initialize the attributes values
-    public function __construct($db, $categoryId) {
+    public function __construct($db, $categoryId)
+    {
         $this->db = $db;
         $this->categoryId = $categoryId;
         $this->points = isset($_SESSION['points']) ? $_SESSION['points'] : 0;
@@ -18,7 +20,8 @@ class Quiz {
         $this->question = new Question($db, $categoryId);
     }
 
-    public function processAnswer($selectedAnswerId) {
+    public function processAnswer($selectedAnswerId)
+    {
         // Query to check if the selected answer is correct
         $sql = "SELECT est_correct FROM reponses WHERE id = :answer_id";
         $selectedAnswer = $this->db->query($sql, ['answer_id' => $selectedAnswerId])->fetch(PDO::FETCH_ASSOC);
@@ -45,34 +48,41 @@ class Quiz {
         return $message;
     }
 
-    public function getQuestion() {
+    public function getQuestion()
+    {
         return $this->question->getQuestion($this->currentQuestionIndex, $this->totalQuestionsAnswered);
     }
 
-    public function getAnswers($questionId) {
+    public function getAnswers($questionId)
+    {
         return $this->question->getAnswers($questionId);
     }
 
-    public function getCategory() {
+    public function getCategory()
+    {
         // Query to get the category name
         $sql = "SELECT nom FROM categories WHERE id = :category_id";
         $category = $this->db->query($sql, ['category_id' => $this->categoryId])->fetch(PDO::FETCH_ASSOC);
         return $category;
     }
 
-    public function getcurrentQuestionsAnswered() {
+    public function getcurrentQuestionsAnswered()
+    {
         return $this->currentQuestionIndex;
     }
 
-    public function getPoints() {
+    public function getPoints()
+    {
         return $this->points;
     }
 
-    public function getTotalQuestionsAnswered() {
+    public function getTotalQuestionsAnswered()
+    {
         return $this->totalQuestionsAnswered;
     }
 
-    public function resetQuizStats() {
+    public function resetQuizStats()
+    {
         $this->points = 0;
         $this->currentQuestionIndex = 1;
         $this->totalQuestionsAnswered = 0;
@@ -81,4 +91,3 @@ class Quiz {
         $_SESSION['totalQuestionsAnswered'] = 0;
     }
 }
-?>

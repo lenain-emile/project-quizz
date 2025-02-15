@@ -2,14 +2,18 @@
 session_start();
 include 'class/Database.php';
 include 'class/Question.php';
+include 'class/Category.php';
+
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
-$db = new Database();
+
 $question = new Question($db, null);
 $questions = $question->fetchAll();
 
+$category = new Category($db);
+$categories = $category->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +34,7 @@ $questions = $question->fetchAll();
 
 <body>
     <header>
-    <nav class="navbar mobile">
+        <nav class="navbar mobile">
             <div class="navbar-container">
                 <input type="checkbox" id="navbar-toggle">
                 <label for="navbar-toggle" class="navbar-icon">&#9776;</label>
@@ -62,32 +66,59 @@ $questions = $question->fetchAll();
                 </ul>
             </div>
         </nav>
-        <h1>Admin Page - Quizz Night</h1>
+        <h1>Page d'administration</h1>
     </header>
 
     <main>
-        <table class="neon-flashing-box">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Question</th>
-                    <th>Category</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($questions as $question): ?>
+        <div class="container">
+            <a href="addQuestion.php">Ajouter une question</a>
+            <a href="addCategory.php">Ajouter une catégorie</a>
+        </div>
+        <h2>Questions</h2>
+            <table class="neon-flashing-box">
+                <thead>
                     <tr>
-                        <td><?= $question['id'] ?></td>
-                        <td><?= htmlspecialchars($question['question_text']) ?></td>
-                        <td><?= htmlspecialchars($question['category_name']) ?></td>
-                        <td><a href="updateQuestion.php?id=<?= $question['id'] ?>">Modifier</a></td>
-                        <td><a href="deleteQuestion.php?id=<?= $question['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette question?')">Supprimer</a></td>
+                        <th>ID</th>
+                        <th>Question</th>
+                        <th>Category</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($questions as $question): ?>
+                        <tr>
+                            <td><?= $question['id'] ?></td>
+                            <td><?= htmlspecialchars($question['question_text']) ?></td>
+                            <td><?= htmlspecialchars($question['category_name']) ?></td>
+                            <td><a href="updateQuestion.php?id=<?= $question['id'] ?>">Modifier</a></td>
+                            <td><a href="deleteQuestion.php?id=<?= $question['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette question?')">Supprimer</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        
+        <h2>Catégories</h2>
+            <table class="neon-flashing-box">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($categories as $category): ?>
+                        <tr>
+                            <td><?= $category['id'] ?></td>
+                            <td><?= htmlspecialchars($category['nom']) ?></td>
+                            <td><a href="updateCategory.php?id=<?= $category['id'] ?>">Modifier</a></td>
+                            <td><a href="deleteCategory.php?id=<?= $category['id'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cette catégorie?')">Supprimer</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
     </main>
 </body>
 

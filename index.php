@@ -10,7 +10,6 @@ include 'class/Category.php';
 $db = new Database();
 $category = new Category($db);
 $categories = $category->fetchAll();
-var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="fr">

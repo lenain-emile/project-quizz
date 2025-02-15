@@ -467,7 +467,26 @@ main {
         margin-top: 10%;
     }
 
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
+    table th, table td {
+        display: block;
+        text-align: right;
+    }
+
+    table th::before, table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+
+    table th:last-child, table td:last-child {
+        border-bottom: 0;
+    }
 }
 
 .item img {

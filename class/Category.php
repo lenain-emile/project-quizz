@@ -20,7 +20,26 @@ class Category {
         $sql = "SELECT * FROM categories";
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
+    public function addCategory($name) {
+        $sql = "INSERT INTO categories (nom) VALUES (:name)";
+        $this->db->insert($sql, ['name' => $name]);
+    }
+
+    public function updateCategory($id, $newName) {
+        $sql = "UPDATE categories SET nom = :name WHERE id = :id";
+        $this->db->query($sql, ['name' => $newName, 'id' => $id]);
+    }
+
+    public function deleteCategory($id) {
+        $sql = "DELETE FROM categories WHERE id = :id";
+        $this->db->query($sql, ['id' => $id]);
+    }
+
+    public function getCategoryById($id) {
+        $sql = "SELECT * FROM categories WHERE id = :id";
+        return $this->db->query($sql, ['id' => $id])->fetch(PDO::FETCH_ASSOC);
+    }
 
     public function getName() {
         return $this->name;

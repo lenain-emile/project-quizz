@@ -4,7 +4,6 @@ session_start();
 include 'class/Database.php';
 include 'class/Quiz.php';
 include 'class/Question.php';
-var_dump($_SESSION);
 
 
 $categoryId = isset($_GET['id_category']) ? intval($_GET['id_category']) : 0;

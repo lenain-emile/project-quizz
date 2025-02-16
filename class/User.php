@@ -21,7 +21,7 @@ class User
             header('Location: ../index.php');
             exit;
         } else {
-            echo "Nom d'utilisateur ou mot de passe incorrect";
+            header('Location: ../login.php');
         }
     }
 

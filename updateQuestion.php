@@ -16,6 +16,11 @@ $answers = $question->getAnswersByQuestionId($questionId);
 $categories = new Category($db);
 $categories = $categories->fetchAll();
 
+// Set the correct answer as first in the array
+usort($answers, function($answerA, $answerB) {
+    return $answerB['est_correct'] - $answerA['est_correct'];
+});
+
 if ($_POST) {
     $questionText = $_POST['Question'];
     $category = $_POST['category'] ?? null;
